@@ -1,0 +1,153 @@
+{
+  "app": {
+    "title": "JSON/YAML Mind Map",
+    "subtitle": "Vizualizacija i uređivanje podataka"
+  },
+  "controls": {
+    "load": "Učitaj",
+    "demo": "Demo",
+    "format": "Formatiraj",
+    "clear": "Obriši",
+    "file": "Datoteka",
+    "save": "Spremi",
+    "loadSession": "Učitaj sesiju",
+    "clearSession": "Obriši sesiju"
+  },
+  "export": {
+    "title": "Izvoz",
+    "svg": "SVG",
+    "png": "PNG",
+    "pdf": "PDF",
+    "json": "JSON",
+    "view": "Pregled",
+    "share": "Podijeli"
+  },
+  "search": {
+    "placeholder": "Pretraži...",
+    "prev": "Prethodni",
+    "next": "Sljedeći",
+    "clear": "Obriši",
+    "caseSensitive": "Velika slova",
+    "wholeWord": "Točno",
+    "results": "rezultata",
+    "of": "od"
+  },
+  "settings": {
+    "title": "Pretraživanje i postavke",
+    "showLabels": "Prikaži oznake",
+    "animations": "Animacije",
+    "grid": "Mreža"
+  },
+  "analytics": {
+    "title": "Analitika",
+    "nodes": "Čvorova",
+    "links": "Veza",
+    "maxDepth": "Maks. dubina",
+    "dataSize": "Veličina podataka"
+  },
+  "toolbar": {
+    "zoomIn": "Uvećaj",
+    "zoomOut": "Umanji",
+    "resetZoom": "Resetiraj zumiranje",
+    "center": "Centriraj",
+    "fullscreen": "Cijeli ekran"
+  },
+  "contextMenu": {
+    "edit": "Uredi",
+    "delete": "Obriši",
+    "expand": "Proširi",
+    "collapse": "Skupi",
+    "expandAll": "Proširi sve",
+    "collapseAll": "Skupi sve"
+  },
+  "jsonEditor": {
+    "title": "JSON uređivač",
+    "editor": "Uređivač",
+    "preview": "Pregled",
+    "format": "Formatiraj",
+    "validate": "Provjeri",
+    "apply": "Primijeni",
+    "reset": "Resetiraj",
+    "copy": "Kopiraj",
+    "download": "Preuzmi",
+    "togglePreview": "Prebaci pregled",
+    "status": {
+      "ready": "Spreman",
+      "valid": "JSON valjan",
+      "error": "JSON greška",
+      "applied": "Promjene primijenjene"
+    }
+  },
+  "share": {
+    "title": "Podijeli",
+    "shortUrl": "Kratki URL",
+    "qrCode": "QR kod",
+    "data": "Podaci",
+    "copyUrl": "Kopiraj",
+    "copyData": "Kopiraj podatke",
+    "downloadQR": "Preuzmi QR",
+    "descriptions": {
+      "url": "Kreira kratki link za brzi pristup vašoj mapi uma",
+      "qr": "QR kod za brzi pristup preko mobilnih uređaja",
+      "data": "Kopirajte JSON podatke za dijeljenje s drugima"
+    }
+  },
+  "messages": {
+    "success": {
+      "loaded": "Podaci učitani",
+      "saved": "Podaci spremljeni",
+      "formatted": "JSON formatiran",
+      "validated": "JSON valjan",
+      "applied": "Promjene primijenjene",
+      "reset": "Promjene resetirane",
+      "copied": "Kopirano u međuspremnik",
+      "downloaded": "Datoteka preuzeta",
+      "urlCopied": "URL kopiran u međuspremnik",
+      "dataCopied": "Podaci kopirani u međuspremnik",
+      "qrDownloaded": "QR kod preuzet",
+      "urlLoaded": "Podaci učitani iz URL"
+    },
+    "error": {
+      "load": "Greška pri učitavanju",
+      "save": "Greška pri spremanju",
+      "format": "Greška pri formatiranju",
+      "validate": "Greška pri provjeri",
+      "apply": "Greška pri primjeni",
+      "copy": "Neuspješno kopiranje",
+      "download": "Greška pri preuzimanju",
+      "urlLoad": "Greška pri učitavanju podataka iz URL",
+      "dependencies": "Neuspješno učitavanje potrebnih biblioteka",
+      "noData": "Nema podataka za operaciju"
+    },
+    "warning": {
+      "noData": "Nema podataka za operaciju",
+      "emptyJson": "JSON je prazan",
+      "invalidJson": "Nevaljan JSON",
+      "rootNode": "Ne može se obrisati korijenski čvor",
+      "nodeNotFound": "Čvor nije pronađen"
+    },
+    "info": {
+      "sessionCleared": "Spremljena sesija obrisana",
+      "allCollapsed": "Svi čvorovi skupljeni",
+      "allExpanded": "Svi čvorovi prošireni",
+      "nodeDeleted": "Čvor obrisan",
+      "labelUpdated": "Oznaka ažurirana"
+    }
+  },
+  "footer": {
+    "tips": {
+      "title": "Savjeti",
+      "drag": "Povucite čvorove za promjenu pozicije",
+      "click": "Kliknite na čvor za skupljanje/proširivanje podstabla",
+      "edit": "Kliknite desnim gumbom miša za uređivanje",
+      "context": "Desni gumb miša otvara kontekstni izbornik",
+      "search": "Koristite pretraživanje za brzo pronalaženje čvorova",
+      "zoom": "Zumiranje kotačićem miša ili gestovima",
+      "undo": "Koristite Ctrl+Z za poništavanje akcija"
+    },
+    "author": {
+      "title": "Autor",
+      "name": "SerGio Play Dev"
+    }
+  }
+}

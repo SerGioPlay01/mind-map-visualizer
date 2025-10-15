@@ -1,0 +1,153 @@
+{
+  "app": {
+    "title": "JSON/YAML Mind Map",
+    "subtitle": "Vizualizacija in urejanje podatkov"
+  },
+  "controls": {
+    "load": "Naloži",
+    "demo": "Demo",
+    "format": "Oblikuj",
+    "clear": "Počisti",
+    "file": "Datoteka",
+    "save": "Shrani",
+    "loadSession": "Naloži sejo",
+    "clearSession": "Počisti sejo"
+  },
+  "export": {
+    "title": "Izvoz",
+    "svg": "SVG",
+    "png": "PNG",
+    "pdf": "PDF",
+    "json": "JSON",
+    "view": "Pregled",
+    "share": "Deli"
+  },
+  "search": {
+    "placeholder": "Išči...",
+    "prev": "Prejšnji",
+    "next": "Naslednji",
+    "clear": "Počisti",
+    "caseSensitive": "Velike črke",
+    "wholeWord": "Natančno",
+    "results": "rezultatov",
+    "of": "od"
+  },
+  "settings": {
+    "title": "Iskanje in nastavitve",
+    "showLabels": "Prikaži oznake",
+    "animations": "Animacije",
+    "grid": "Mreža"
+  },
+  "analytics": {
+    "title": "Analitika",
+    "nodes": "Vozlišč",
+    "links": "Povezav",
+    "maxDepth": "Maks. globina",
+    "dataSize": "Velikost podatkov"
+  },
+  "toolbar": {
+    "zoomIn": "Povečaj",
+    "zoomOut": "Pomanjšaj",
+    "resetZoom": "Ponastavi povečavo",
+    "center": "Centriraj",
+    "fullscreen": "Celoten zaslon"
+  },
+  "contextMenu": {
+    "edit": "Uredi",
+    "delete": "Izbriši",
+    "expand": "Razširi",
+    "collapse": "Skrči",
+    "expandAll": "Razširi vse",
+    "collapseAll": "Skrči vse"
+  },
+  "jsonEditor": {
+    "title": "JSON urejevalnik",
+    "editor": "Urejevalnik",
+    "preview": "Pregled",
+    "format": "Oblikuj",
+    "validate": "Preveri",
+    "apply": "Uveljavi",
+    "reset": "Ponastavi",
+    "copy": "Kopiraj",
+    "download": "Prenesi",
+    "togglePreview": "Preklopi pregled",
+    "status": {
+      "ready": "Pripravljen",
+      "valid": "JSON veljaven",
+      "error": "JSON napaka",
+      "applied": "Spremembe uveljavljene"
+    }
+  },
+  "share": {
+    "title": "Deli",
+    "shortUrl": "Kratki URL",
+    "qrCode": "QR koda",
+    "data": "Podatki",
+    "copyUrl": "Kopiraj",
+    "copyData": "Kopiraj podatke",
+    "downloadQR": "Prenesi QR",
+    "descriptions": {
+      "url": "Ustvari kratko povezavo za hiter dostop do vaše miselne karte",
+      "qr": "QR koda za hiter dostop preko mobilnih naprav",
+      "data": "Kopirajte JSON podatke za deljenje z drugimi"
+    }
+  },
+  "messages": {
+    "success": {
+      "loaded": "Podatki naloženi",
+      "saved": "Podatki shranjeni",
+      "formatted": "JSON oblikovan",
+      "validated": "JSON veljaven",
+      "applied": "Spremembe uveljavljene",
+      "reset": "Spremembe ponastavljene",
+      "copied": "Kopirano v odložišče",
+      "downloaded": "Datoteka prenesena",
+      "urlCopied": "URL kopiran v odložišče",
+      "dataCopied": "Podatki kopirani v odložišče",
+      "qrDownloaded": "QR koda prenesena",
+      "urlLoaded": "Podatki naloženi iz URL"
+    },
+    "error": {
+      "load": "Napaka pri nalaganju",
+      "save": "Napaka pri shranjevanju",
+      "format": "Napaka pri oblikovanju",
+      "validate": "Napaka pri preverjanju",
+      "apply": "Napaka pri uveljavitvi",
+      "copy": "Neuspešno kopiranje",
+      "download": "Napaka pri prenašanju",
+      "urlLoad": "Napaka pri nalaganju podatkov iz URL",
+      "dependencies": "Neuspešno nalaganje potrebnih knjižnic",
+      "noData": "Ni podatkov za operacijo"
+    },
+    "warning": {
+      "noData": "Ni podatkov za operacijo",
+      "emptyJson": "JSON je prazen",
+      "invalidJson": "Neveljaven JSON",
+      "rootNode": "Korenskega vozlišča ni mogoče izbrisati",
+      "nodeNotFound": "Vozlišče ni najdeno"
+    },
+    "info": {
+      "sessionCleared": "Shranjena seja počiščena",
+      "allCollapsed": "Vsa vozlišča skrčena",
+      "allExpanded": "Vsa vozlišča razširjena",
+      "nodeDeleted": "Vozlišče izbrisano",
+      "labelUpdated": "Oznaka posodobljena"
+    }
+  },
+  "footer": {
+    "tips": {
+      "title": "Nasveti",
+      "drag": "Povlecite vozlišča za spremembo položaja",
+      "click": "Kliknite na vozlišče za skrčitev/razširitev poddrevesa",
+      "edit": "Kliknite z desnim gumbom miške za urejanje",
+      "context": "Desni gumb miške odpre kontekstni meni",
+      "search": "Uporabite iskanje za hitro iskanje vozlišč",
+      "zoom": "Povečava s kolesom miške ali gestami",
+      "undo": "Uporabite Ctrl+Z za razveljavitev dejanj"
+    },
+    "author": {
+      "title": "Avtor",
+      "name": "SerGio Play Dev"
+    }
+  }
+}

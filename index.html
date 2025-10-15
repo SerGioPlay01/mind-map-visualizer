@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes" />
+  <title>JSON/YAML Mind Map Visualizer - Интерактивная визуализация данных</title>
+
+  <!-- Favicon and Icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#007bff">
+  <meta name="msapplication-TileColor" content="#007bff">
+  <meta name="theme-color" content="#007bff">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="JSON/YAML Mind Map Visualizer - Интерактивная визуализация данных">
+  <meta name="description" content="Современный веб-инструмент для визуализации, анализа и редактирования JSON/YAML данных в виде интерактивных mind map диаграмм. Поддержка 11 языков, экспорт в SVG/PNG/PDF, поиск и навигация.">
+  <meta name="keywords" content="JSON, YAML, mind map, визуализация, данные, анализ, форматирование, диаграммы, интерактивность, D3.js, веб-приложение, PWA">
+  <meta name="author" content="SerGio Play Dev">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="ru">
+  <meta name="revisit-after" content="7 days">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mind-map-visualizer.netlify.app/">
+  <meta property="og:title" content="JSON/YAML Mind Map Visualizer - Интерактивная визуализация данных">
+  <meta property="og:description" content="Современный веб-инструмент для визуализации, анализа и редактирования JSON/YAML данных в виде интерактивных mind map диаграмм.">
+  <meta property="og:image" content="https://mind-map-visualizer.netlify.app/mindmap.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Mind Map Visualizer">
+  <meta property="og:locale" content="ru_RU">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://mind-map-visualizer.netlify.app/">
+  <meta property="twitter:title" content="JSON/YAML Mind Map Visualizer - Интерактивная визуализация данных">
+  <meta property="twitter:description" content="Современный веб-инструмент для визуализации, анализа и редактирования JSON/YAML данных в виде интерактивных mind map диаграмм.">
+  <meta property="twitter:image" content="https://mind-map-visualizer.netlify.app/mindmap.png">
+  <meta property="twitter:creator" content="@SerGioPlay01">
+  
+  <!-- PWA Meta Tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Mind Map Visualizer">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Mind Map Visualizer">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="apple-touch-fullscreen" content="yes">
+  <meta name="apple-mobile-web-app-orientations" content="portrait">
+  
+  <!-- International Meta Tags -->
+  <link rel="alternate" hreflang="ru" href="https://mind-map-visualizer.netlify.app/">
+  <link rel="alternate" hreflang="en" href="https://mind-map-visualizer.netlify.app/">
+  <link rel="alternate" hreflang="uk" href="https://mind-map-visualizer.netlify.app/">
+  <link rel="alternate" hreflang="pl" href="https://mind-map-visualizer.netlify.app/">
+  <link rel="alternate" hreflang="cs" href="https://mind-map-visualizer.netlify.app/">
+  <link rel="alternate" hreflang="sk" href="https://mind-map-visualizer.netlify.app/">
+  <link rel="alternate" hreflang="bg" href="https://mind-map-visualizer.netlify.app/">
+  <link rel="alternate" hreflang="sr" href="https://mind-map-visualizer.netlify.app/">
+  <link rel="alternate" hreflang="hr" href="https://mind-map-visualizer.netlify.app/">
+  <link rel="alternate" hreflang="mk" href="https://mind-map-visualizer.netlify.app/">
+  <link rel="alternate" hreflang="sl" href="https://mind-map-visualizer.netlify.app/">
+  <link rel="alternate" hreflang="x-default" href="https://mind-map-visualizer.netlify.app/">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="bootstrap-icons/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animations.css">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Libraries -->
+    <script src="libs/d3.min.js"></script>
+    <script src="libs/js-yaml.min.js"></script>
+    <script src="libs/jspdf.umd.min.js"></script>
+    <script src="libs/qrcode.min.js"></script>
+  
+  <!-- Configuration -->
+  <script src="config.js"></script>
+  <script src="utils.js"></script>
+</head>
+
+<body>
+  <div class="lava-background">
+    <div class="lava-blob blob-1"></div>
+    <div class="lava-blob blob-2"></div>
+    <div class="lava-blob blob-3"></div>
+    <div class="lava-blob blob-4"></div>
+    <div class="lava-blob blob-5"></div>
+    <div class="lava-blob blob-6"></div>
+  </div>
+
+  <div class="app">
+    <header class="top">
+      <div class="title">
+        <h1><i class="bi bi-diagram-3"></i> JSON/YAML Mind Map Visualizer</h1>
+        <p class="lead">Современный инструмент для визуализации, анализа и форматирования JSON/YAML данных</p>
+      </div>
+
+      <!-- Language and Theme Controls -->
+      <div class="header-controls">
+        <select id="languageSelect" class="language-select" title="Выбрать язык">
+          <option value="ru">🇷🇺 Русский</option>
+          <option value="en">🇺🇸 English</option>
+          <option value="ua">🇺🇦 Українська</option>
+          <option value="pl">🇵🇱 Polski</option>
+          <option value="cs">🇨🇿 Čeština</option>
+          <option value="sk">🇸🇰 Slovenčina</option>
+          <option value="bg">🇧🇬 Български</option>
+          <option value="sr">🇷🇸 Српски</option>
+          <option value="hr">🇭🇷 Hrvatski</option>
+          <option value="mk">🇲🇰 Македонски</option>
+          <option value="sl">🇸🇮 Slovenščina</option>
+        </select>
+        <button id="themeToggle" class="theme-btn" title="Переключить тему">
+          <i class="bi bi-moon-fill theme-icon"></i>
+        </button>
+      </div>
+    </header>
+
+    <div class="main-content">
+      <div class="sidebar">
+        <div class="controls-panel">
+          <h3><i class="bi bi-gear-fill"></i> <span data-i18n="controls.title">Панель управления</span></h3>
+          
+          <div class="input-section">
+            <label for="inputData">Введите JSON или YAML:</label>
+            <textarea id="inputData" placeholder="Вставьте JSON или YAML здесь..." spellcheck="false"></textarea>
+          </div>
+
+          <div class="file-section">
+          <input id="fileInput" type="file" accept=".json,.yaml,.yml,application/json" style="display:none">
+            <button id="btnFile" class="btn btn-primary">
+              <i class="bi bi-folder2-open btn-icon"></i>
+              Загрузить файл
+            </button>
+          </div>
+
+          <div class="actions-section">
+            <h4 data-i18n="controls.actions">Действия</h4>
+            <div class="btn-grid">
+              <button id="btnLoad" class="btn btn-success">
+                <i class="bi bi-play-circle btn-icon"></i>
+                <span data-i18n="controls.load">Визуализировать</span>
+              </button>
+              <button id="btnDemo" class="btn btn-info">
+                <i class="bi bi-controller btn-icon"></i>
+                <span data-i18n="controls.demo">Демо</span>
+              </button>
+              <button id="btnFormat" class="btn btn-warning">
+                <i class="bi bi-magic btn-icon"></i>
+                <span data-i18n="controls.format">Форматировать</span>
+              </button>
+              <button id="btnClear" class="btn btn-danger">
+                <i class="bi bi-trash btn-icon"></i>
+                <span data-i18n="controls.clear">Очистить</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="export-section">
+            <h4 data-i18n="controls.export">Экспорт</h4>
+            <div class="btn-grid">
+              <button id="btnDownloadSVG" class="btn btn-secondary">
+                <i class="bi bi-file-earmark-image btn-icon"></i>
+                <span data-i18n="controls.downloadSVG">SVG</span>
+              </button>
+              <button id="btnDownloadPNG" class="btn btn-secondary">
+                <i class="bi bi-image btn-icon"></i>
+                <span data-i18n="controls.downloadPNG">PNG</span>
+              </button>
+              <button id="btnDownloadPDF" class="btn btn-secondary">
+                <i class="bi bi-file-earmark-pdf btn-icon"></i>
+                <span data-i18n="controls.downloadPDF">PDF</span>
+              </button>
+              <button id="btnDownloadJSON" class="btn btn-secondary">
+                <i class="bi bi-file-earmark-code btn-icon"></i>
+                <span data-i18n="controls.downloadJSON">JSON</span>
+              </button>
+              <button id="btnViewJSON" class="btn btn-secondary">
+                <i class="bi bi-eye btn-icon"></i>
+                <span data-i18n="controls.viewJSON">Просмотр</span>
+              </button>
+              <button id="btnShare" class="btn btn-secondary">
+                <i class="bi bi-share btn-icon"></i>
+                <span data-i18n="controls.share">Поделиться</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="session-section">
+            <h4 data-i18n="controls.sessions">Сессии</h4>
+            <div class="btn-grid">
+              <button id="btnSave" class="btn btn-outline">
+                <i class="bi bi-save btn-icon"></i>
+                <span data-i18n="controls.saveSession">Сохранить</span>
+              </button>
+              <button id="btnLoadSession" class="btn btn-outline">
+                <i class="bi bi-folder btn-icon"></i>
+                <span data-i18n="controls.loadSession">Загрузить</span>
+              </button>
+              <button id="btnClearSession" class="btn btn-outline">
+                <i class="bi bi-trash3 btn-icon"></i>
+                <span data-i18n="controls.clearSession">Очистить</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="options-section">
+            <h4 data-i18n="controls.searchAndSettings">Поиск и настройки</h4>
+            <div class="search-container">
+              <input id="search" placeholder="Поиск..." class="search-input" data-i18n-placeholder="search.placeholder" />
+              <div class="search-controls">
+                <button id="searchPrev" class="btn btn-sm" data-i18n-title="search.prevResult">
+                  <i class="bi bi-chevron-up"></i>
+                </button>
+                <button id="searchNext" class="btn btn-sm" data-i18n-title="search.nextResult">
+                  <i class="bi bi-chevron-down"></i>
+                </button>
+                <button id="clearSearch" class="btn btn-sm" data-i18n-title="search.clearSearch">
+                  <i class="bi bi-x"></i>
+                </button>
+              </div>
+            </div>
+            <div class="search-results" id="searchResults" style="display: none;">
+              <span id="searchCount">0 результатов</span>
+            </div>
+            <div class="search-options">
+              <button id="toggleSearchCase" class="btn btn-sm" data-i18n-title="search.caseSensitive">
+                <i class="bi bi-type btn-icon"></i>
+                <span data-i18n="search.caseSensitive">Регистр</span>
+              </button>
+              <button id="toggleSearchWhole" class="btn btn-sm" data-i18n-title="search.wholeWord">
+                <i class="bi bi-bullseye btn-icon"></i>
+                <span data-i18n="search.wholeWord">Точное</span>
+              </button>
+            </div>
+            <div class="option-item">
+              <label class="checkbox-label">
+                <input id="toggleLabels" type="checkbox" checked />
+                <span class="checkmark"></span>
+                <span data-i18n="controls.toggleLabels">Показывать метки</span>
+              </label>
+            </div>
+            <div class="option-item">
+              <label class="checkbox-label">
+                <input id="toggleAnimations" type="checkbox" checked />
+                <span class="checkmark"></span>
+                <span data-i18n="controls.toggleAnimations">Анимации</span>
+              </label>
+            </div>
+            <div class="option-item">
+              <label class="checkbox-label">
+                <input id="toggleGrid" type="checkbox" />
+                <span class="checkmark"></span>
+                <span data-i18n="controls.toggleGrid">Сетка</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analytics Panel -->
+        <div class="analytics-panel">
+          <h3><i class="bi bi-graph-up"></i> <span data-i18n="analytics.title">Аналитика</span></h3>
+          <div id="analyticsContent">
+            <div class="stat-item">
+              <span class="stat-label" data-i18n="analytics.nodes">Узлов:</span>
+              <span id="nodeCount" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label" data-i18n="analytics.links">Связей:</span>
+              <span id="linkCount" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label" data-i18n="analytics.maxDepth">Глубина:</span>
+              <span id="maxDepth" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label" data-i18n="analytics.dataSize">Размер:</span>
+              <span id="dataSize" class="stat-value">0 KB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="visualization-area">
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <button id="btnZoomIn" class="toolbar-btn" data-i18n-title="toolbar.zoomIn"><i class="bi bi-zoom-in"></i></button>
+            <button id="btnZoomOut" class="toolbar-btn" data-i18n-title="toolbar.zoomOut"><i class="bi bi-zoom-out"></i></button>
+            <button id="btnResetZoom" class="toolbar-btn" data-i18n-title="toolbar.resetZoom"><i class="bi bi-arrow-clockwise"></i></button>
+            <button id="btnCenter" class="toolbar-btn" data-i18n-title="toolbar.centerView"><i class="bi bi-geo-alt"></i></button>
+          </div>
+          <div class="toolbar-right">
+            <span class="zoom-level"><span data-i18n="toolbar.zoom">Масштаб:</span> <span id="zoomLevel">100%</span></span>
+            <button id="btnFullscreen" class="toolbar-btn" data-i18n-title="toolbar.fullscreen"><i class="bi bi-fullscreen"></i></button>
+          </div>
+        </div>
+
+    <main class="stage">
+      <div id="mindmap" class="mindmap"></div>
+      
+      <!-- Project Information Panel (shown when no data) -->
+      <div id="projectInfo" class="project-info">
+        <div class="project-info-content">
+          <div class="project-header">
+            <h1><i class="bi bi-diagram-3"></i> JSON/YAML Mind Map Visualizer</h1>
+            <p class="project-subtitle">Современный инструмент для визуализации иерархических данных</p>
+          </div>
+          
+          <div class="project-features">
+            <div class="feature-grid">
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="bi bi-file-code"></i>
+                </div>
+                <h3>Поддержка форматов</h3>
+                <p>JSON, YAML, XML - загружайте данные в любом формате</p>
+              </div>
+              
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="bi bi-diagram-3"></i>
+                </div>
+                <h3>Интерактивная визуализация</h3>
+                <p>Перетаскивание узлов, масштабирование, редактирование</p>
+              </div>
+              
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="bi bi-search"></i>
+                </div>
+                <h3>Умный поиск</h3>
+                <p>Быстрый поиск по узлам с подсветкой результатов</p>
+              </div>
+              
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="bi bi-download"></i>
+                </div>
+                <h3>Экспорт данных</h3>
+                <p>SVG, PNG, PDF, JSON - экспортируйте в любом формате</p>
+              </div>
+              
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="bi bi-share"></i>
+                </div>
+                <h3>Поделиться</h3>
+                <p>Генерация ссылок и QR-кодов для быстрого доступа</p>
+              </div>
+              
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="bi bi-globe"></i>
+                </div>
+                <h3>Многоязычность</h3>
+                <p>Поддержка 11 языков включая все славянские</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-examples">
+            <h2><i class="bi bi-lightbulb"></i> Примеры использования</h2>
+            <div class="examples-grid">
+              <div class="example-item">
+                <h4><i class="bi bi-briefcase"></i> Бизнес-процессы</h4>
+                <p>Визуализация организационной структуры, workflow, схем принятия решений</p>
+              </div>
+              
+              <div class="example-item">
+                <h4><i class="bi bi-mortarboard"></i> Образование</h4>
+                <p>Создание mind map для изучения, конспектов, планов обучения</p>
+              </div>
+              
+              <div class="example-item">
+                <h4><i class="bi bi-code-slash"></i> Разработка</h4>
+                <p>Структура API, архитектура приложений, схемы баз данных</p>
+              </div>
+              
+              <div class="example-item">
+                <h4><i class="bi bi-lightbulb"></i> Креатив</h4>
+                <p>Планирование проектов, мозговой штурм, генерация идей</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-getting-started">
+            <h2><i class="bi bi-rocket-takeoff"></i> Как начать</h2>
+            <div class="steps">
+              <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <h4>Загрузите данные</h4>
+                  <p>Вставьте JSON/YAML в поле ввода или загрузите файл</p>
+                </div>
+              </div>
+              
+              <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <h4>Настройте визуализацию</h4>
+                  <p>Используйте панель управления для настройки отображения</p>
+                </div>
+              </div>
+              
+              <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <h4>Экспортируйте результат</h4>
+                  <p>Сохраните mind map в нужном формате или поделитесь ссылкой</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-demo">
+            <h2><i class="bi bi-play-circle"></i> Попробуйте демо</h2>
+            <p>Нажмите кнопку "Демо" в панели управления, чтобы увидеть пример работы с данными</p>
+            <button id="demoFromInfo" class="btn btn-primary btn-lg">
+              <i class="bi bi-play-fill"></i> Загрузить демо данные
+            </button>
+          </div>
+          
+          <div class="project-footer">
+            <p><i class="bi bi-github"></i> <strong>Open Source</strong> - Исходный код доступен на GitHub</p>
+            <p><i class="bi bi-heart"></i> Создано с ❤️ для сообщества разработчиков</p>
+          </div>
+        </div>
+      </div>
+      
+      <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner"></div>
+        <p>Обработка данных...</p>
+      </div>
+    </main>
+      </div>
+    </div>
+
+    <!-- Context Menu -->
+    <div id="contextMenu" class="context-menu" style="display: none;">
+      <div class="context-item" data-action="edit">
+        <i class="bi bi-pencil context-icon"></i>
+        Редактировать
+      </div>
+      <div class="context-item" data-action="delete">
+        <i class="bi bi-trash context-icon"></i>
+        Удалить
+      </div>
+      <div class="context-item" data-action="expand">
+        <i class="bi bi-folder2-open context-icon"></i>
+        Развернуть все
+      </div>
+      <div class="context-item" data-action="collapse">
+        <i class="bi bi-folder context-icon"></i>
+        Свернуть все
+      </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-tips">
+          <h4><i class="bi bi-lightbulb"></i> Подсказки:</h4>
+          <ul>
+            <li>Перетаскивайте узлы для изменения позиции</li>
+            <li>Щелкните по узлу, чтобы свернуть/развернуть поддерево</li>
+            <li>Клик правой кнопкой мыши для редактирования</li>
+            <li>Правый клик открывает контекстное меню</li>
+            <li>Используйте поиск для быстрого нахождения узлов</li>
+            <li>Масштабирование колесом мыши или жестами</li>
+            <li>Используйте Ctrl+Z для отмены действий</li>
+          </ul>
+        </div>
+        
+      <div class="footer-author">
+          <span>Создано с ❤️</span>
+        <a href="https://sergioplay-dev.vercel.app/" target="_blank" rel="noopener noreferrer" class="author-link">
+            <i class="bi bi-code-slash author-icon"></i>
+          <span>SerGio Play Dev</span>
+        </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- JSON Editor Modal -->
+  <div id="jsonModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="bi bi-file-code"></i> Редактор JSON</h3>
+        <button id="closeJsonModal" class="modal-close" title="Закрыть">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="json-controls">
+          <button id="formatJson" class="btn btn-sm" title="Форматировать JSON">
+            <i class="bi bi-code-square"></i> Форматировать
+          </button>
+          <button id="validateJson" class="btn btn-sm" title="Проверить JSON">
+            <i class="bi bi-check-circle"></i> Проверить
+          </button>
+          <button id="applyChanges" class="btn btn-sm btn-primary" title="Применить изменения">
+            <i class="bi bi-check-lg"></i> Применить
+          </button>
+          <button id="resetJson" class="btn btn-sm" title="Сбросить изменения">
+            <i class="bi bi-arrow-clockwise"></i> Сбросить
+          </button>
+          <button id="copyJson" class="btn btn-sm" title="Копировать в буфер обмена">
+            <i class="bi bi-clipboard"></i> Копировать
+          </button>
+          <button id="downloadJson" class="btn btn-sm" title="Скачать как файл">
+            <i class="bi bi-download"></i> Скачать
+          </button>
+        </div>
+        <div class="json-editor-container">
+          <div class="json-editor-panel">
+            <div class="panel-header">
+              <h4><i class="bi bi-pencil-square"></i> Редактор</h4>
+              <div class="editor-status" id="editorStatus">
+                <span class="status-indicator" id="statusIndicator"></span>
+                <span id="statusText">Готов</span>
+              </div>
+            </div>
+            <textarea id="jsonEditor" class="json-editor" placeholder="Введите JSON данные..."></textarea>
+          </div>
+          <!-- Preview panel disabled -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Share Modal -->
+  <div id="shareModal" class="modal" style="display: none;">
+    <div class="modal-content share-modal">
+      <div class="modal-header">
+        <h3><i class="bi bi-share"></i> Поделиться</h3>
+        <button id="closeShareModal" class="modal-close" title="Закрыть">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="share-options">
+          <div class="share-option">
+            <h4><i class="bi bi-link-45deg"></i> Сокращенная ссылка</h4>
+            <div class="share-input-group">
+              <input type="text" id="shareUrl" class="share-input" readonly>
+              <button id="copyShareUrl" class="btn btn-primary">
+                <i class="bi bi-clipboard"></i> Копировать
+              </button>
+            </div>
+            <p class="share-description">Создает короткую ссылку для быстрого доступа к вашей mind map</p>
+          </div>
+          
+          <div class="share-option">
+            <h4><i class="bi bi-qr-code"></i> QR код</h4>
+            <div class="qr-container">
+              <canvas id="qrCode" width="256" height="256"></canvas>
+            </div>
+            <button id="downloadQR" class="btn btn-secondary">
+              <i class="bi bi-download"></i> Скачать QR
+            </button>
+          </div>
+          
+          <div class="share-option">
+            <h4><i class="bi bi-file-earmark-code"></i> Данные</h4>
+            <div class="share-input-group">
+              <textarea id="shareData" class="share-textarea" readonly></textarea>
+              <button id="copyShareData" class="btn btn-secondary">
+                <i class="bi bi-clipboard"></i> Копировать данные
+              </button>
+            </div>
+            <p class="share-description">Скопируйте JSON данные для передачи другим</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+  <script src="pwa-enhancements.js" defer></script>
+  
+  <!-- PWA Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW registered: ', registration);
+            
+            // Check for updates
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  // New update available
+                  if (confirm('Доступно обновление приложения. Перезагрузить страницу?')) {
+                    window.location.reload();
+                  }
+                }
+              });
+            });
+          })
+          .catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+    
+    // PWA Install Prompt
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      
+      // Show install button or notification
+      const installButton = document.createElement('button');
+      installButton.textContent = 'Установить приложение';
+      installButton.className = 'btn btn-primary';
+      installButton.style.position = 'fixed';
+      installButton.style.bottom = '20px';
+      installButton.style.right = '20px';
+      installButton.style.zIndex = '9999';
+      
+      installButton.addEventListener('click', () => {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the install prompt');
+          }
+          deferredPrompt = null;
+          installButton.remove();
+        });
+      });
+      
+      document.body.appendChild(installButton);
+      
+      // Auto-hide after 10 seconds
+      setTimeout(() => {
+        if (installButton.parentNode) {
+          installButton.remove();
+        }
+      }, 10000);
+    });
+    
+    // PWA App Installed
+    window.addEventListener('appinstalled', (evt) => {
+      console.log('PWA was installed');
+    });
+  </script>
+</body>
+</html>

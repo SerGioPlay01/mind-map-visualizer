@@ -1,0 +1,153 @@
+{
+  "app": {
+    "title": "JSON/YAML Mind Map",
+    "subtitle": "Vizualizácia a úprava dát"
+  },
+  "controls": {
+    "load": "Načítať",
+    "demo": "Demo",
+    "format": "Formátovať",
+    "clear": "Vymazať",
+    "file": "Súbor",
+    "save": "Uložiť",
+    "loadSession": "Načítať reláciu",
+    "clearSession": "Vymazať reláciu"
+  },
+  "export": {
+    "title": "Export",
+    "svg": "SVG",
+    "png": "PNG",
+    "pdf": "PDF",
+    "json": "JSON",
+    "view": "Náhľad",
+    "share": "Zdieľať"
+  },
+  "search": {
+    "placeholder": "Hľadať...",
+    "prev": "Predchádzajúci",
+    "next": "Ďalší",
+    "clear": "Vymazať",
+    "caseSensitive": "Veľkosť",
+    "wholeWord": "Presné",
+    "results": "výsledkov",
+    "of": "z"
+  },
+  "settings": {
+    "title": "Vyhľadávanie a nastavenia",
+    "showLabels": "Zobraziť štítky",
+    "animations": "Animácie",
+    "grid": "Mriežka"
+  },
+  "analytics": {
+    "title": "Analytika",
+    "nodes": "Uzlov",
+    "links": "Spojení",
+    "maxDepth": "Max. hĺbka",
+    "dataSize": "Veľkosť dát"
+  },
+  "toolbar": {
+    "zoomIn": "Priblížiť",
+    "zoomOut": "Oddialiť",
+    "resetZoom": "Resetovať zoom",
+    "center": "Vycentrovať",
+    "fullscreen": "Celá obrazovka"
+  },
+  "contextMenu": {
+    "edit": "Upraviť",
+    "delete": "Zmazať",
+    "expand": "Rozbaliť",
+    "collapse": "Zbaliť",
+    "expandAll": "Rozbaliť všetko",
+    "collapseAll": "Zbaliť všetko"
+  },
+  "jsonEditor": {
+    "title": "Editor JSON",
+    "editor": "Editor",
+    "preview": "Náhľad",
+    "format": "Formátovať",
+    "validate": "Overiť",
+    "apply": "Použiť",
+    "reset": "Resetovať",
+    "copy": "Kopírovať",
+    "download": "Stiahnuť",
+    "togglePreview": "Prepnúť náhľad",
+    "status": {
+      "ready": "Pripravené",
+      "valid": "JSON platný",
+      "error": "Chyba JSON",
+      "applied": "Zmeny použité"
+    }
+  },
+  "share": {
+    "title": "Zdieľať",
+    "shortUrl": "Krátky URL",
+    "qrCode": "QR kód",
+    "data": "Dáta",
+    "copyUrl": "Kopírovať",
+    "copyData": "Kopírovať dáta",
+    "downloadQR": "Stiahnuť QR",
+    "descriptions": {
+      "url": "Vytvorí krátky odkaz pre rýchly prístup k vašej mape myšlienok",
+      "qr": "QR kód pre rýchly prístup cez mobilné zariadenia",
+      "data": "Skopírujte JSON dáta pre zdieľanie s ostatnými"
+    }
+  },
+  "messages": {
+    "success": {
+      "loaded": "Dáta načítané",
+      "saved": "Dáta uložené",
+      "formatted": "JSON naformátovaný",
+      "validated": "JSON platný",
+      "applied": "Zmeny použité",
+      "reset": "Zmeny resetované",
+      "copied": "Skopírované do schránky",
+      "downloaded": "Súbor stiahnutý",
+      "urlCopied": "URL skopírovaný do schránky",
+      "dataCopied": "Dáta skopírované do schránky",
+      "qrDownloaded": "QR kód stiahnutý",
+      "urlLoaded": "Dáta načítané z URL"
+    },
+    "error": {
+      "load": "Chyba načítania",
+      "save": "Chyba ukladania",
+      "format": "Chyba formátovania",
+      "validate": "Chyba overenia",
+      "apply": "Chyba použitia",
+      "copy": "Nepodarilo sa skopírovať",
+      "download": "Chyba sťahovania",
+      "urlLoad": "Chyba načítania dát z URL",
+      "dependencies": "Nepodarilo sa načítať požadované knižnice",
+      "noData": "Žiadne dáta pre operáciu"
+    },
+    "warning": {
+      "noData": "Žiadne dáta pre operáciu",
+      "emptyJson": "JSON je prázdny",
+      "invalidJson": "Neplatný JSON",
+      "rootNode": "Nie je možné zmazať koreňový uzol",
+      "nodeNotFound": "Uzol nenájdený"
+    },
+    "info": {
+      "sessionCleared": "Uložená relácia vymazaná",
+      "allCollapsed": "Všetky uzly zbalené",
+      "allExpanded": "Všetky uzly rozbalené",
+      "nodeDeleted": "Uzol zmazaný",
+      "labelUpdated": "Štítok aktualizovaný"
+    }
+  },
+  "footer": {
+    "tips": {
+      "title": "Tipy",
+      "drag": "Pretiahnite uzly pre zmenu pozície",
+      "click": "Kliknite na uzol pre zbalenie/rozbaliť podstrom",
+      "edit": "Kliknite pravým tlačidlom myši pre úpravu",
+      "context": "Pravé tlačidlo myši otvorí kontextové menu",
+      "search": "Použite vyhľadávanie pre rýchle nájdenie uzlov",
+      "zoom": "Zoom kolieskom myši alebo gestami",
+      "undo": "Použite Ctrl+Z pre vrátenie akcií"
+    },
+    "author": {
+      "title": "Autor",
+      "name": "SerGio Play Dev"
+    }
+  }
+}

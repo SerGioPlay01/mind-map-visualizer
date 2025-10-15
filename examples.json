@@ -1,0 +1,192 @@
+{
+  "examples": [
+    {
+      "name": "Простая структура пользователя",
+      "description": "Базовый пример с информацией о пользователе",
+      "data": {
+        "user": {
+          "id": 12345,
+          "name": "Иван Петров",
+          "email": "ivan@example.com",
+          "profile": {
+            "age": 28,
+            "city": "Москва",
+            "country": "Россия",
+            "interests": ["программирование", "музыка", "путешествия"]
+          },
+          "settings": {
+            "theme": "dark",
+            "language": "ru",
+            "notifications": {
+              "email": true,
+              "push": false,
+              "sms": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Структура веб-приложения",
+      "description": "Пример архитектуры веб-приложения",
+      "data": {
+        "app": {
+          "name": "Task Manager",
+          "version": "2.1.0",
+          "environment": "production",
+          "database": {
+            "type": "PostgreSQL",
+            "host": "localhost",
+            "port": 5432,
+            "name": "taskmanager",
+            "tables": ["users", "tasks", "projects", "comments"]
+          },
+          "api": {
+            "version": "v1",
+            "endpoints": {
+              "auth": {
+                "login": "POST /api/v1/auth/login",
+                "register": "POST /api/v1/auth/register",
+                "logout": "POST /api/v1/auth/logout"
+              },
+              "tasks": {
+                "list": "GET /api/v1/tasks",
+                "create": "POST /api/v1/tasks",
+                "update": "PUT /api/v1/tasks/:id",
+                "delete": "DELETE /api/v1/tasks/:id"
+              }
+            }
+          },
+          "frontend": {
+            "framework": "React",
+            "version": "18.2.0",
+            "components": {
+              "layout": ["Header", "Sidebar", "Footer"],
+              "pages": ["Dashboard", "Tasks", "Profile", "Settings"],
+              "ui": ["Button", "Modal", "Form", "Table"]
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Конфигурация проекта",
+      "description": "Пример конфигурационного файла проекта",
+      "data": {
+        "project": {
+          "name": "json-yaml-mind-map",
+          "description": "Интерактивный визуализатор JSON/YAML данных",
+          "version": "2.0.0",
+          "author": {
+            "name": "SerGio Play Dev",
+            "email": "contact@sergioplay.dev",
+            "website": "https://sergioplay-dev.netlify.app"
+          },
+          "scripts": {
+            "dev": "vite",
+            "build": "vite build",
+            "preview": "vite preview",
+            "lint": "eslint src",
+            "test": "jest"
+          },
+          "dependencies": {
+            "d3": "^7.8.5",
+            "js-yaml": "^4.1.0",
+            "jspdf": "^2.5.1"
+          },
+          "devDependencies": {
+            "vite": "^4.4.0",
+            "eslint": "^8.45.0",
+            "jest": "^29.6.0"
+          },
+          "features": {
+            "visualization": {
+              "forceDirected": true,
+              "dragAndDrop": true,
+              "zoom": true,
+              "search": true
+            },
+            "export": {
+              "svg": true,
+              "png": true,
+              "pdf": true,
+              "json": true
+            },
+            "themes": {
+              "light": true,
+              "dark": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Сложная иерархия данных",
+      "description": "Пример с глубокой вложенностью и массивами",
+      "data": {
+        "company": {
+          "name": "TechCorp",
+          "founded": 2010,
+          "departments": [
+            {
+              "name": "Разработка",
+              "head": "Анна Смирнова",
+              "teams": [
+                {
+                  "name": "Frontend",
+                  "lead": "Петр Иванов",
+                  "members": [
+                    {"name": "Мария Козлова", "role": "Senior Developer"},
+                    {"name": "Алексей Петров", "role": "Middle Developer"},
+                    {"name": "Елена Сидорова", "role": "Junior Developer"}
+                  ],
+                  "technologies": ["React", "TypeScript", "Vite", "TailwindCSS"]
+                },
+                {
+                  "name": "Backend",
+                  "lead": "Дмитрий Волков",
+                  "members": [
+                    {"name": "Ольга Морозова", "role": "Senior Developer"},
+                    {"name": "Сергей Новиков", "role": "Middle Developer"}
+                  ],
+                  "technologies": ["Node.js", "Express", "PostgreSQL", "Redis"]
+                }
+              ]
+            },
+            {
+              "name": "Дизайн",
+              "head": "Татьяна Лебедева",
+              "teams": [
+                {
+                  "name": "UI/UX",
+                  "lead": "Игорь Соколов",
+                  "members": [
+                    {"name": "Наталья Кузнецова", "role": "UI Designer"},
+                    {"name": "Владимир Попов", "role": "UX Designer"}
+                  ],
+                  "tools": ["Figma", "Sketch", "Adobe XD", "Principle"]
+                }
+              ]
+            }
+          ],
+          "projects": [
+            {
+              "name": "E-commerce Platform",
+              "status": "active",
+              "budget": 500000,
+              "timeline": {
+                "start": "2023-01-01",
+                "end": "2023-12-31",
+                "milestones": [
+                  {"name": "MVP", "date": "2023-06-01", "completed": true},
+                  {"name": "Beta Release", "date": "2023-09-01", "completed": false},
+                  {"name": "Production", "date": "2023-12-01", "completed": false}
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

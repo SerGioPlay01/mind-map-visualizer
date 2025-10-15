@@ -1,0 +1,153 @@
+{
+  "app": {
+    "title": "JSON/YAML Mind Map",
+    "subtitle": "Wizualizacja i edycja danych"
+  },
+  "controls": {
+    "load": "Załaduj",
+    "demo": "Demo",
+    "format": "Formatuj",
+    "clear": "Wyczyść",
+    "file": "Plik",
+    "save": "Zapisz",
+    "loadSession": "Załaduj sesję",
+    "clearSession": "Wyczyść sesję"
+  },
+  "export": {
+    "title": "Eksport",
+    "svg": "SVG",
+    "png": "PNG",
+    "pdf": "PDF",
+    "json": "JSON",
+    "view": "Podgląd",
+    "share": "Udostępnij"
+  },
+  "search": {
+    "placeholder": "Szukaj...",
+    "prev": "Poprzedni",
+    "next": "Następny",
+    "clear": "Wyczyść",
+    "caseSensitive": "Wielkość",
+    "wholeWord": "Dokładne",
+    "results": "wyników",
+    "of": "z"
+  },
+  "settings": {
+    "title": "Wyszukiwanie i ustawienia",
+    "showLabels": "Pokaż etykiety",
+    "animations": "Animacje",
+    "grid": "Siatka"
+  },
+  "analytics": {
+    "title": "Analityka",
+    "nodes": "Węzłów",
+    "links": "Połączeń",
+    "maxDepth": "Maks. głębokość",
+    "dataSize": "Rozmiar danych"
+  },
+  "toolbar": {
+    "zoomIn": "Powiększ",
+    "zoomOut": "Pomniejsz",
+    "resetZoom": "Resetuj zoom",
+    "center": "Wyśrodkuj",
+    "fullscreen": "Pełny ekran"
+  },
+  "contextMenu": {
+    "edit": "Edytuj",
+    "delete": "Usuń",
+    "expand": "Rozwiń",
+    "collapse": "Zwiń",
+    "expandAll": "Rozwiń wszystko",
+    "collapseAll": "Zwiń wszystko"
+  },
+  "jsonEditor": {
+    "title": "Edytor JSON",
+    "editor": "Edytor",
+    "preview": "Podgląd",
+    "format": "Formatuj",
+    "validate": "Sprawdź",
+    "apply": "Zastosuj",
+    "reset": "Resetuj",
+    "copy": "Kopiuj",
+    "download": "Pobierz",
+    "togglePreview": "Przełącz podgląd",
+    "status": {
+      "ready": "Gotowy",
+      "valid": "JSON prawidłowy",
+      "error": "Błąd JSON",
+      "applied": "Zmiany zastosowane"
+    }
+  },
+  "share": {
+    "title": "Udostępnij",
+    "shortUrl": "Krótki URL",
+    "qrCode": "Kod QR",
+    "data": "Dane",
+    "copyUrl": "Kopiuj",
+    "copyData": "Kopiuj dane",
+    "downloadQR": "Pobierz QR",
+    "descriptions": {
+      "url": "Tworzy krótki link do szybkiego dostępu do Twojej mapy myśli",
+      "qr": "Kod QR do szybkiego dostępu przez urządzenia mobilne",
+      "data": "Skopiuj dane JSON do udostępnienia innym"
+    }
+  },
+  "messages": {
+    "success": {
+      "loaded": "Dane załadowane",
+      "saved": "Dane zapisane",
+      "formatted": "JSON sformatowany",
+      "validated": "JSON prawidłowy",
+      "applied": "Zmiany zastosowane",
+      "reset": "Zmiany zresetowane",
+      "copied": "Skopiowano do schowka",
+      "downloaded": "Plik pobrany",
+      "urlCopied": "URL skopiowany do schowka",
+      "dataCopied": "Dane skopiowane do schowka",
+      "qrDownloaded": "Kod QR pobrany",
+      "urlLoaded": "Dane załadowane z URL"
+    },
+    "error": {
+      "load": "Błąd ładowania",
+      "save": "Błąd zapisywania",
+      "format": "Błąd formatowania",
+      "validate": "Błąd walidacji",
+      "apply": "Błąd zastosowania",
+      "copy": "Nie udało się skopiować",
+      "download": "Błąd pobierania",
+      "urlLoad": "Błąd ładowania danych z URL",
+      "dependencies": "Nie udało się załadować wymaganych bibliotek",
+      "noData": "Brak danych do operacji"
+    },
+    "warning": {
+      "noData": "Brak danych do operacji",
+      "emptyJson": "JSON jest pusty",
+      "invalidJson": "Nieprawidłowy JSON",
+      "rootNode": "Nie można usunąć węzła głównego",
+      "nodeNotFound": "Węzeł nie znaleziony"
+    },
+    "info": {
+      "sessionCleared": "Zapisana sesja wyczyszczona",
+      "allCollapsed": "Wszystkie węzły zwinięte",
+      "allExpanded": "Wszystkie węzły rozwinięte",
+      "nodeDeleted": "Węzeł usunięty",
+      "labelUpdated": "Etykieta zaktualizowana"
+    }
+  },
+  "footer": {
+    "tips": {
+      "title": "Wskazówki",
+      "drag": "Przeciągnij węzły, aby zmienić pozycję",
+      "click": "Kliknij węzeł, aby zwinąć/rozwinąć poddrzewo",
+      "edit": "Kliknij prawym przyciskiem myszy, aby edytować",
+      "context": "Prawy przycisk myszy otwiera menu kontekstowe",
+      "search": "Użyj wyszukiwania, aby szybko znaleźć węzły",
+      "zoom": "Zoom kółkiem myszy lub gestami",
+      "undo": "Użyj Ctrl+Z, aby cofnąć akcje"
+    },
+    "author": {
+      "title": "Autor",
+      "name": "SerGio Play Dev"
+    }
+  }
+}

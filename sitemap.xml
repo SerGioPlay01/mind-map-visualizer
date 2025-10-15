@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Main page -->
+  <url>
+    <loc>https://mind-map-visualizer.netlify.app/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    
+    <!-- Alternative language versions -->
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mind-map-visualizer.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mind-map-visualizer.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://mind-map-visualizer.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://mind-map-visualizer.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://mind-map-visualizer.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="sk" href="https://mind-map-visualizer.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="bg" href="https://mind-map-visualizer.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="sr" href="https://mind-map-visualizer.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="hr" href="https://mind-map-visualizer.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="mk" href="https://mind-map-visualizer.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="sl" href="https://mind-map-visualizer.netlify.app/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mind-map-visualizer.netlify.app/"/>
+  </url>
+  
+  <!-- Documentation pages -->
+  <url>
+    <loc>https://mind-map-visualizer.netlify.app/README.md</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://mind-map-visualizer.netlify.app/EXAMPLES.md</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://mind-map-visualizer.netlify.app/DEPLOYMENT.md</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <!-- Static assets -->
+  <url>
+    <loc>https://mind-map-visualizer.netlify.app/style.css</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <url>
+    <loc>https://mind-map-visualizer.netlify.app/script.js</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <!-- Language files -->
+  <url>
+    <loc>https://mind-map-visualizer.netlify.app/langs/ru.json</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  
+  <url>
+    <loc>https://mind-map-visualizer.netlify.app/langs/en.json</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  
+  <!-- PWA files -->
+  <url>
+    <loc>https://mind-map-visualizer.netlify.app/site.webmanifest</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://mind-map-visualizer.netlify.app/sw.js</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+</urlset>

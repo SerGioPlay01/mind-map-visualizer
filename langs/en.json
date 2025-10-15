@@ -1,0 +1,176 @@
+{
+  "app": {
+    "title": "JSON/YAML Mind Map",
+    "subtitle": "Data visualization and editing"
+  },
+  "controls": {
+    "title": "Control Panel",
+    "actions": "Actions",
+    "export": "Export",
+    "sessions": "Sessions",
+    "searchAndSettings": "Search and Settings",
+    "load": "Visualize",
+    "demo": "Demo",
+    "format": "Format",
+    "clear": "Clear",
+    "loadFile": "Load File",
+    "downloadSVG": "SVG",
+    "downloadPNG": "PNG",
+    "downloadPDF": "PDF",
+    "downloadJSON": "JSON",
+    "viewJSON": "View",
+    "share": "Share",
+    "saveSession": "Save",
+    "loadSession": "Load",
+    "clearSession": "Clear",
+    "toggleLabels": "Show Labels",
+    "toggleAnimations": "Animations",
+    "toggleGrid": "Grid"
+  },
+  "export": {
+    "title": "Export",
+    "svg": "SVG",
+    "png": "PNG",
+    "pdf": "PDF",
+    "json": "JSON",
+    "view": "View",
+    "share": "Share"
+  },
+  "search": {
+    "placeholder": "Search...",
+    "prev": "Previous",
+    "next": "Next",
+    "clear": "Clear",
+    "prevResult": "Previous result",
+    "nextResult": "Next result",
+    "clearSearch": "Clear search",
+    "caseSensitive": "Case",
+    "wholeWord": "Exact",
+    "results": "results",
+    "of": "of"
+  },
+  "settings": {
+    "title": "Search and Settings",
+    "showLabels": "Show Labels",
+    "animations": "Animations",
+    "grid": "Grid",
+    "selectLanguage": "Select language",
+    "toggleTheme": "Toggle theme"
+  },
+  "analytics": {
+    "title": "Analytics",
+    "nodes": "Nodes",
+    "links": "Links",
+    "maxDepth": "Max Depth",
+    "dataSize": "Data Size"
+  },
+  "toolbar": {
+    "zoomIn": "Zoom In",
+    "zoomOut": "Zoom Out",
+    "resetZoom": "Reset Zoom",
+    "center": "Center",
+    "fullscreen": "Fullscreen"
+  },
+  "contextMenu": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "expandAll": "Expand All",
+    "collapseAll": "Collapse All"
+  },
+  "jsonEditor": {
+    "title": "JSON Editor",
+    "editor": "Editor",
+    "preview": "Preview",
+    "format": "Format",
+    "validate": "Validate",
+    "apply": "Apply",
+    "reset": "Reset",
+    "copy": "Copy",
+    "download": "Download",
+    "togglePreview": "Toggle Preview",
+    "status": {
+      "ready": "Ready",
+      "valid": "JSON Valid",
+      "error": "JSON Error",
+      "applied": "Changes Applied"
+    }
+  },
+  "share": {
+    "title": "Share",
+    "shortUrl": "Short URL",
+    "qrCode": "QR Code",
+    "data": "Data",
+    "copyUrl": "Copy",
+    "copyData": "Copy Data",
+    "downloadQR": "Download QR",
+    "descriptions": {
+      "url": "Creates a short link for quick access to your mind map",
+      "qr": "QR code for quick access via mobile devices",
+      "data": "Copy JSON data to share with others"
+    }
+  },
+  "messages": {
+    "success": {
+      "loaded": "Data loaded",
+      "saved": "Data saved",
+      "formatted": "JSON formatted",
+      "validated": "JSON valid",
+      "applied": "Changes applied",
+      "reset": "Changes reset",
+      "copied": "Copied to clipboard",
+      "downloaded": "File downloaded",
+      "urlCopied": "URL copied to clipboard",
+      "dataCopied": "Data copied to clipboard",
+      "qrDownloaded": "QR code downloaded",
+      "urlLoaded": "Data loaded from URL"
+    },
+    "error": {
+      "load": "Load error",
+      "save": "Save error",
+      "format": "Format error",
+      "validate": "Validation error",
+      "apply": "Apply error",
+      "copy": "Failed to copy",
+      "download": "Download error",
+      "urlLoad": "Error loading data from URL",
+      "dependencies": "Failed to load required libraries",
+      "noData": "No data for operation",
+      "invalidData": "Invalid data format"
+    },
+    "warning": {
+      "noData": "No data for operation",
+      "emptyJson": "JSON is empty",
+      "invalidJson": "Invalid JSON",
+      "rootNode": "Cannot delete root node",
+      "nodeNotFound": "Node not found"
+    },
+    "info": {
+      "sessionCleared": "Saved session cleared",
+      "allCollapsed": "All nodes collapsed",
+      "allExpanded": "All nodes expanded",
+      "nodeDeleted": "Node deleted",
+      "labelUpdated": "Label updated",
+      "newDiagram": "New diagram created",
+      "demoLoaded": "Demo data loaded",
+      "dataLoaded": "Data loaded from URL"
+    }
+  },
+  "footer": {
+    "tips": {
+      "title": "Tips",
+      "drag": "Drag nodes to change position",
+      "click": "Click on node to collapse/expand subtree",
+      "zoom": "Zoom with mouse wheel or gestures",
+      "undo": "Use Ctrl+Z to undo actions",
+      "edit": "Right-click to edit",
+      "search": "Use search to quickly find nodes",
+      "context": "Right-click opens context menu"
+    },
+    "author": {
+      "title": "Author",
+      "name": "SerGio Play Dev"
+    }
+  }
+}
