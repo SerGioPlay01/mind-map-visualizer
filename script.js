@@ -469,39 +469,36 @@
 
   // Initialize SVG
   function initSVG() {
-    // Only clear if no SVG exists
-    if (!state.svg) {
-      elements.container.innerHTML = '';
+    // Clear container if SVG exists
+    if (state.svg) {
+      state.svg.remove();
     }
     
-    state.width = elements.container.clientWidth || 800;
-    state.height = elements.container.clientHeight || 600;
+    // Get container dimensions
+    const containerRect = elements.container.getBoundingClientRect();
+    state.width = containerRect.width || 800;
+    state.height = containerRect.height || 600;
 
-    if (!state.svg) {
-      state.svg = d3.select(elements.container).append('svg')
+    // Create new SVG
+    state.svg = d3.select(elements.container)
+      .append('svg')
       .attr('width', '100%')
       .attr('height', '100%')
-        .attr('viewBox', `0 0 ${state.width} ${state.height}`)
+      .attr('viewBox', `0 0 ${state.width} ${state.height}`)
       .style('background', 'transparent')
       .style('cursor', 'grab');
 
-      // For mobile devices, make SVG responsive
-      if (window.innerWidth <= 768) {
-        state.svg.attr('preserveAspectRatio', 'xMidYMid meet');
-      }
+    // For mobile devices, make SVG responsive
+    if (window.innerWidth <= 768) {
+      state.svg.attr('preserveAspectRatio', 'xMidYMid meet');
     }
 
-    if (!state.gViewport) {
-      state.gViewport = state.svg.append('g').attr('class', 'viewport');
-      state.gLink = state.gViewport.append('g').attr('class', 'links');
-      state.gNode = state.gViewport.append('g').attr('class', 'nodes');
-    }
+    // Create viewport and groups
+    state.gViewport = state.svg.append('g').attr('class', 'viewport');
+    state.gLink = state.gViewport.append('g').attr('class', 'links');
+    state.gNode = state.gViewport.append('g').attr('class', 'nodes');
 
-    // Enhanced zoom with better controls
-    if (!state.svg.select('.zoom-initialized').empty()) {
-      return; // Already initialized
-    }
-    
+    // Initialize zoom
     const zoom = d3.zoom()
       .scaleExtent([0.1, 8])
       .on('zoom', (event) => {
@@ -512,7 +509,6 @@
 
     state.svg.call(zoom);
     state.zoom = d3.zoomIdentity;
-    state.svg.classed('zoom-initialized', true);
 
     // Center initial view
     state.svg.call(zoom.transform, d3.zoomIdentity.translate(0, 0).scale(1));
@@ -614,7 +610,14 @@
 
   // Enhanced update function with better performance
   function update() {
-    if (!state.svg) initSVG();
+    if (!state.treeRoot) {
+      console.warn('No tree root to update');
+      return;
+    }
+
+    if (!state.svg) {
+      initSVG();
+    }
 
     const graph = flatten(state.treeRoot);
     
@@ -625,7 +628,7 @@
       return prev ? Object.assign(prev, n) : Object.assign({}, n, { 
         x: state.width / 2 + (Math.random() - 0.5) * 100, 
         y: state.height / 2 + (Math.random() - 0.5) * 100 
-    });
+      });
     });
     state.links = graph.links.map(l => Object.assign({}, l));
 
@@ -1291,7 +1294,7 @@
         // Check if QRCode library is available
         if (typeof QRCode === 'undefined') {
           console.warn('QRCode library not loaded, using fallback');
-          this.generateQRCodeFallback(url);
+          shareManager.generateQRCodeFallback(url);
           return;
         }
         
@@ -1313,12 +1316,12 @@
         }, (error) => {
           if (error) {
             console.error('QR Code generation error:', error);
-            this.generateQRCodeFallback(url);
+            shareManager.generateQRCodeFallback(url);
           }
         });
       } catch (error) {
         console.error('QR Code generation error:', error);
-        this.generateQRCodeFallback(url);
+        shareManager.generateQRCodeFallback(url);
       }
     },
     
@@ -1603,31 +1606,35 @@
     }
     
     const txt = (elements.inputData.value || '').trim();
-    if (!txt) return utils.showToast('Введите JSON или YAML данные', 'warning');
+    if (!txt) {
+      utils.showToast('Введите JSON или YAML данные', 'warning');
+      return;
+    }
     
     utils.showLoading(true);
     
     setTimeout(() => {
       try {
-    let parsed;
-    try {
-      parsed = JSON.parse(txt);
-    } catch (_) {
-      try {
+        let parsed;
+        try {
+          parsed = JSON.parse(txt);
+        } catch (_) {
+          try {
             if (typeof jsyaml === 'undefined') {
               throw new Error('js-yaml не загружен. Проверьте подключение к интернету.');
             }
-        parsed = jsyaml.load(txt);
-      } catch (e) {
+            parsed = jsyaml.load(txt);
+          } catch (e) {
             throw new Error('Неверный формат JSON/YAML: ' + (e && e.message));
-      }
-    }
+          }
+        }
         
         historyManager.save();
         state.treeRoot = buildTree(parsed, 'root', 0);
-    update();
+        update();
         utils.showToast('Данные успешно обработаны', 'success');
       } catch (error) {
+        console.error('Parse error:', error);
         utils.showToast(error.message, 'error');
       } finally {
         utils.showLoading(false);
@@ -1695,7 +1702,9 @@
     
     elements.inputData.value = JSON.stringify(demo, null, 2);
     parseAndRender();
-    hideProjectInfo();
+    setTimeout(() => {
+      hideProjectInfo();
+    }, 500);
   }
 
   // Utility functions for tree manipulation
@@ -1898,16 +1907,17 @@
     // File handling
     elements.btnFile.addEventListener('click', () => elements.fileInput.click());
     elements.fileInput.addEventListener('change', async (ev) => {
-    const f = ev.target.files && ev.target.files[0];
-    if (!f) return;
+      const f = ev.target.files && ev.target.files[0];
+      if (!f) return;
       
       try {
-    const txt = await f.text();
+        const txt = await f.text();
         elements.inputData.value = txt;
-    parseAndRender();
+        parseAndRender();
         utils.showToast(`Файл ${f.name} загружен`, 'success');
       } catch (error) {
-        utils.showToast('Ошибка загрузки файла', 'error');
+        console.error('File loading error:', error);
+        utils.showToast('Ошибка загрузки файла: ' + error.message, 'error');
       }
     });
 
@@ -2122,6 +2132,10 @@
       missing.push('jsPDF');
     }
     
+    if (typeof QRCode === 'undefined') {
+      missing.push('QRCode');
+    }
+    
     if (missing.length > 0) {
       const errorMsg = `Ошибка загрузки библиотек: ${missing.join(', ')}. Убедитесь, что все файлы библиотек находятся в папке libs/`;
       console.error(errorMsg);
@@ -2159,8 +2173,11 @@
 
   // Initialize application
   async function init() {
+    console.log('Initializing application...');
+    
     // Check dependencies first
     if (!checkDependencies()) {
+      console.error('Dependencies check failed');
       return;
     }
     
@@ -2191,37 +2208,21 @@
     elements.languageSelect.value = state.currentLanguage;
     await i18n.loadLanguage(state.currentLanguage);
     
-    // Initialize SVG for zoom controls
-    initSVG();
-    
-    // Ensure SVG is available for zoom controls
-    if (!state.svg) {
-      console.warn('SVG not initialized, retrying...');
-      setTimeout(() => {
-        initSVG();
-      }, 100);
-    }
-    
     // Initialize theme
     themeManager.init();
     
     // Setup event listeners
     setupEventListeners();
     
-    // Load demo data
-    loadDemo();
-    
-    // Show project info if no data (after demo is loaded)
-    setTimeout(() => {
-      if (!state.treeRoot) {
-        showProjectInfo();
-      }
-    }, 100);
+    // Show project info initially
+    showProjectInfo();
     
     // Show welcome message
     setTimeout(() => {
       utils.showToast('Добро пожаловать в JSON/YAML Mind Map Visualizer!', 'info', 5000);
     }, 1000);
+    
+    console.log('Application initialized successfully');
   }
 
   // Save settings on change
