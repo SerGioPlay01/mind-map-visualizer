@@ -312,9 +312,9 @@ class PWAEnhancer {
   
   // Notification API
   setupNotificationAPI() {
-    if ('Notification' in window && Notification.permission === 'default') {
-      this.requestNotificationPermission();
-    }
+    // Don't automatically request notification permission
+    // It should be requested only in response to user action
+    console.log('Notification API available:', 'Notification' in window);
   }
   
   async requestNotificationPermission() {

@@ -130,7 +130,7 @@
     
     showToast: (message, type = 'info', duration = 3000) => {
       // If message is a translation key, translate it
-      if (typeof message === 'string' && message.includes('.')) {
+      if (typeof message === 'string' && message.includes('.') && !message.includes(' ')) {
         const translated = i18n.t(message);
         if (translated !== message) {
           message = translated;
@@ -599,12 +599,16 @@
   function showProjectInfo() {
     if (elements.projectInfo) {
       elements.projectInfo.style.display = 'block';
+      elements.projectInfo.style.visibility = 'visible';
+      elements.projectInfo.style.opacity = '1';
     }
   }
   
   function hideProjectInfo() {
     if (elements.projectInfo) {
       elements.projectInfo.style.display = 'none';
+      elements.projectInfo.style.visibility = 'hidden';
+      elements.projectInfo.style.opacity = '0';
     }
   }
 
@@ -1615,6 +1619,19 @@
     
     setTimeout(() => {
       try {
+        // Clear previous visualization
+        if (state.svg) {
+          state.svg.remove();
+          state.svg = null;
+          state.gViewport = null;
+          state.gLink = null;
+          state.gNode = null;
+        }
+        
+        // Clear previous data
+        state.nodes = [];
+        state.links = [];
+        
         let parsed;
         try {
           parsed = JSON.parse(txt);
@@ -1632,6 +1649,10 @@
         historyManager.save();
         state.treeRoot = buildTree(parsed, 'root', 0);
         update();
+        
+        // Hide project info after successful processing
+        hideProjectInfo();
+        
         utils.showToast('Данные успешно обработаны', 'success');
       } catch (error) {
         console.error('Parse error:', error);
@@ -1700,11 +1721,31 @@
       ]
     };
     
+    // Clear previous data
+    state.treeRoot = null;
+    state.nodes = [];
+    state.links = [];
+    
+    // Clear SVG if exists
+    if (state.svg) {
+      state.svg.remove();
+      state.svg = null;
+      state.gViewport = null;
+      state.gLink = null;
+      state.gNode = null;
+    }
+    
+    // Clear search results
+    state.searchResults = [];
+    state.currentSearchIndex = -1;
+    elements.searchInput.value = '';
+    
+    // Hide project info
+    hideProjectInfo();
+    
+    // Load demo data
     elements.inputData.value = JSON.stringify(demo, null, 2);
     parseAndRender();
-    setTimeout(() => {
-      hideProjectInfo();
-    }, 500);
   }
 
   // Utility functions for tree manipulation
@@ -1911,10 +1952,42 @@
       if (!f) return;
       
       try {
+        // Clear previous data
+        state.treeRoot = null;
+        state.nodes = [];
+        state.links = [];
+        
+        // Clear SVG if exists
+        if (state.svg) {
+          state.svg.remove();
+          state.svg = null;
+          state.gViewport = null;
+          state.gLink = null;
+          state.gNode = null;
+        }
+        
+        // Clear search results
+        state.searchResults = [];
+        state.currentSearchIndex = -1;
+        elements.searchInput.value = '';
+        
+        // Hide project info
+        hideProjectInfo();
+        
+        // Load new file
         const txt = await f.text();
         elements.inputData.value = txt;
         parseAndRender();
+        
+        // Ensure project info is hidden after successful load
+        setTimeout(() => {
+          hideProjectInfo();
+        }, 100);
+        
         utils.showToast(`Файл ${f.name} загружен`, 'success');
+        
+        // Clear file input to allow loading the same file again
+        ev.target.value = '';
       } catch (error) {
         console.error('File loading error:', error);
         utils.showToast('Ошибка загрузки файла: ' + error.message, 'error');
@@ -2017,7 +2090,9 @@
     elements.validateJson.addEventListener('click', jsonViewer.validate.bind(jsonViewer));
     elements.applyChanges.addEventListener('click', jsonViewer.apply.bind(jsonViewer));
     elements.resetJson.addEventListener('click', jsonViewer.reset.bind(jsonViewer));
-    elements.togglePreview.addEventListener('click', jsonViewer.togglePreview.bind(jsonViewer));
+    if (elements.togglePreview) {
+      elements.togglePreview.addEventListener('click', jsonViewer.togglePreview.bind(jsonViewer));
+    }
     
     // Real-time preview updates disabled
     
